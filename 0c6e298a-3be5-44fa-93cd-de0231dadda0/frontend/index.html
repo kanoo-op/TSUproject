@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTodo</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Instagram-like logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Auth Section -->
+    <div id="auth-container">
+        <div class="flex-col">
+            <!-- Login Form -->
+            <div id="login-form" class="auth-card">
+                <h1 class="auth-logo">MyTodo</h1>
+                <form id="loginForm">
+                    <input type="email" id="loginEmail" class="auth-input" placeholder="Email" required>
+                    <input type="password" id="loginPassword" class="auth-input" placeholder="Password" required>
+                    <button type="submit" class="auth-btn">Log In</button>
+                </form>
+                <div class="flex items-center justify-center" style="margin: 10px 0;">
+                    <div style="height: 1px; background: #dbdbdb; flex: 1;"></div>
+                    <span style="margin: 0 10px; color: #8e8e8e; font-size: 12px; font-weight: 600;">OR</span>
+                    <div style="height: 1px; background: #dbdbdb; flex: 1;"></div>
+                </div>
+                <a href="#" class="auth-link" id="forgotPasswordLink">Forgot password?</a>
+            </div>
+            <div id="login-switch" class="auth-switch">
+                Don't have an account? <a href="#" id="showSignup">Sign up</a>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-form" class="auth-card hidden">
+                <h1 class="auth-logo">MyTodo</h1>
+                <h2 style="color: #8e8e8e; font-size: 17px; font-weight: 600; margin-bottom: 20px;">Sign up to see your todos.</h2>
+                <form id="signupForm">
+                    <input type="email" id="signupEmail" class="auth-input" placeholder="Email" required>
+                    <input type="text" id="signupNickname" class="auth-input" placeholder="Nickname" required>
+                    <input type="password" id="signupPassword" class="auth-input" placeholder="Password" required>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+            </div>
+            <div id="signup-switch" class="auth-switch hidden">
+                Have an account? <a href="#" id="showLogin">Log in</a>
+            </div>
+
+            <!-- Reset Password Form -->
+            <div id="reset-form" class="auth-card hidden">
+                 <h1 class="auth-logo">MyTodo</h1>
+                 <h4 style="margin-bottom: 10px;">Reset Password</h4>
+                 <p style="color: #8e8e8e; font-size: 14px; margin-bottom: 20px;">Enter your email and new password.</p>
+                 <form id="resetForm">
+                    <input type="email" id="resetEmail" class="auth-input" placeholder="Email" required>
+                    <input type="password" id="resetNewPassword" class="auth-input" placeholder="New Password" required>
+                    <button type="submit" class="auth-btn">Reset Password</button>
+                 </form>
+                 <a href="#" class="auth-link" id="backToLogin">Back to Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Section -->
+    <div id="app-container" class="hidden">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="user-profile">
+                <div style="width: 24px; height: 24px; background: #e0e0e0; border-radius: 3px; display: flex; align-items: center; justify-content: center;">👤</div>
+                <span id="userNickname">User</span>
+            </div>
+            
+            <div class="nav-item active" data-filter="all">
+                <span>📑</span> All Todos
+            </div>
+            <div class="nav-item" data-filter="TODO">
+                <span>📝</span> To Do
+            </div>
+            <div class="nav-item" data-filter="DOING">
+                <span>🏃</span> Doing
+            </div>
+            <div class="nav-item" data-filter="DONE">
+                <span>✅</span> Done
+            </div>
+
+            <div class="nav-item logout-btn" id="logoutBtn">
+                <span>🚪</span> Log Out
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="main-content">
+            <div class="top-bar">
+                <span class="page-title" id="pageTitle">All Todos</span>
+                <input type="text" id="searchInput" placeholder="Search..." style="border: none; background: #f0f0f0; padding: 6px 12px; border-radius: 4px; font-size: 14px;">
+            </div>
+
+            <div class="todo-list-container">
+                <input type="text" class="new-todo-input" id="newTodoInput" placeholder="Add a new task...">
+                <div id="todoList">
+                    <!-- Todo Items will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div id="detail-panel">
+            <div class="detail-header">
+                <span style="font-size: 12px; color: #9b9a97;">Details</span>
+                <button class="close-btn" id="closeDetailBtn">»</button>
+            </div>
+            <div class="detail-content">
+                <textarea class="detail-title-input" id="detailTitle" rows="1"></textarea>
+                
+                <div class="detail-meta-row">
+                    <div class="detail-meta-label">Status</div>
+                    <div class="detail-meta-value">
+                        <select id="detailStatus">
+                            <option value="TODO">To Do</option>
+                            <option value="DOING">Doing</option>
+                            <option value="DONE">Done</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="detail-meta-row">
+                    <div class="detail-meta-label">Priority</div>
+                    <div class="detail-meta-value">
+                        <select id="detailPriority">
+                            <option value="LOW">Low</option>
+                            <option value="MEDIUM">Medium</option>
+                            <option value="HIGH">High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="detail-meta-row">
+                    <div class="detail-meta-label">Deadline</div>
+                    <div class="detail-meta-value">
+                        <input type="date" id="detailDeadline">
+                    </div>
+                </div>
+
+                <textarea class="detail-textarea" id="detailContent" placeholder="Type your notes here..."></textarea>
+
+                <button class="delete-btn" id="deleteTodoBtn">Delete this todo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

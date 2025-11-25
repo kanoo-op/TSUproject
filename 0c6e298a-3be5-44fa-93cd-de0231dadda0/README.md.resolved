@@ -1,0 +1,95 @@
+# MyTodo - Full Stack Todo List App
+
+A web-based Todo List application featuring a polished UI (Instagram-style login, Notion-style dashboard), user authentication, and full CRUD capabilities. Built with Node.js, Express, MariaDB, and Vanilla JS.
+
+## 📂 Project Structure
+
+```
+/
+├── backend/
+│   ├── db.js               # Database connection pool
+│   ├── server.js           # Express server entry point
+│   ├── package.json        # Backend dependencies
+│   ├── middleware/
+│   │   └── auth.js         # JWT Authentication middleware
+│   └── routes/
+│       ├── auth.js         # Auth routes (Signup, Login, Reset)
+│       └── todos.js        # Todo CRUD routes
+├── frontend/
+│   ├── index.html          # Main HTML (SPA structure)
+│   ├── style.css           # CSS Styles
+│   └── app.js              # Frontend Logic
+└── db/
+    └── schema.sql          # SQL script to initialize database
+```
+
+## 🚀 Getting Started
+
+### 1. Database Setup (MariaDB)
+
+Ensure you have MariaDB installed and running.
+
+1.  Open your SQL client (e.g., HeidiSQL, DBeaver, or command line).
+2.  Connect with the credentials:
+    *   **Host**: `localhost`
+    *   **User**: `root`
+    *   **Password**: `dlrlqja1`
+3.  Run the script located at [db/schema.sql](file:///C:/Users/pc000/.gemini/antigravity/brain/0c6e298a-3be5-44fa-93cd-de0231dadda0/db/schema.sql).
+    *   This will create the `mytodo` database.
+    *   It will create `users` and `todos` tables.
+
+### 2. Backend Setup
+
+1.  Open a terminal and navigate to the `backend` directory:
+    ```bash
+    cd backend
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+3.  Start the server:
+    ```bash
+    npm start
+    ```
+    *   The server will run on `http://localhost:3000`.
+
+### 3. Frontend Setup
+
+The backend server is configured to serve the frontend static files automatically.
+
+1.  Open your browser and visit:
+    ```
+    http://localhost:3000
+    ```
+2.  You should see the Login page.
+
+## 📖 Features & Usage
+
+### Authentication
+*   **Sign Up**: Create a new account with Email, Nickname, and Password.
+*   **Log In**: Access your private Todo list.
+*   **Log Out**: Securely end your session.
+
+### Todo Management
+*   **Create**: Add tasks with Title, Priority, and Deadline.
+*   **Read**: View tasks filtered by status (Todo, Doing, Done) or Search by text.
+*   **Update**: Click any task to open the **Detail Panel** on the right. You can edit the title, add detailed notes, change status/priority, or set a deadline. Changes are saved automatically (or via specific actions).
+*   **Delete**: Remove tasks from the detail panel.
+
+## 🛠 API Endpoints
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| **POST** | `/api/auth/signup` | Register a new user |
+| **POST** | `/api/auth/login` | Login and receive JWT |
+| **POST** | `/api/auth/reset-password` | Reset password (Mock) |
+| **GET** | `/api/todos` | Get all todos (supports `?status=` and `?search=`) |
+| **POST** | `/api/todos` | Create a new todo |
+| **PUT** | `/api/todos/:id` | Update a todo |
+| **DELETE** | `/api/todos/:id` | Delete a todo |
+
+## 📝 Notes
+*   **Security**: Passwords are hashed using `bcrypt`. Authentication uses `jsonwebtoken` (JWT).
+*   **Database**: Uses `mysql2` with a connection pool for efficient DB interactions.
+*   **Frontend**: Pure Vanilla JS implementation demonstrating SPA concepts without heavy frameworks.

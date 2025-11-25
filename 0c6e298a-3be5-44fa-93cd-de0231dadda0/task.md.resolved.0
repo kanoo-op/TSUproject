@@ -1,0 +1,20 @@
+# Todo List Application Task List
+
+- [ ] Planning
+    - [ ] Create implementation plan <!-- id: 0 -->
+    - [ ] Define database schema <!-- id: 1 -->
+- [ ] Database Setup
+    - [ ] Create SQL scripts for DB initialization (users, todos tables) <!-- id: 2 -->
+- [ ] Backend Development
+    - [ ] Initialize Node.js project <!-- id: 3 -->
+    - [ ] Implement DB connection (MariaDB) <!-- id: 4 -->
+    - [ ] Implement Auth API (Signup, Login, Logout, Password Reset) <!-- id: 5 -->
+    - [ ] Implement Todo API (CRUD, Search, Filter) <!-- id: 6 -->
+- [ ] Frontend Development
+    - [ ] Create Login/Signup UI (Instagram style) <!-- id: 7 -->
+    - [ ] Create Main Dashboard UI (Notion/Keep style) <!-- id: 8 -->
+    - [ ] Implement Frontend Logic (Auth integration) <!-- id: 9 -->
+    - [ ] Implement Frontend Logic (Todo CRUD integration) <!-- id: 10 -->
+- [ ] Verification & Documentation
+    - [ ] Verify full flow (Signup -> Login -> Create Todo -> View -> Logout) <!-- id: 11 -->
+    - [ ] Write README/Instructions <!-- id: 12 -->
